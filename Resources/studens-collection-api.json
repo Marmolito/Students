@@ -1,0 +1,132 @@
+{
+  "info": {
+    "_postman_id": "12345678-abcd-efgh-ijkl-9876543210ab",
+    "name": "Registro de Estudiantes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Registrar Estudiante",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"correo\": \"juan.perez@example.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/estudiantes?materiasIds=1&materiasIds=2&materiasIds=3",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "estudiantes"],
+          "query": [
+            {
+              "key": "materiasIds",
+              "value": "1"
+            },
+            {
+              "key": "materiasIds",
+              "value": "2"
+            },
+            {
+              "key": "materiasIds",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Todos los Estudiantes",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/estudiantes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "estudiantes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Estudiante por ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/estudiantes/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "estudiantes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Todas las Materias",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/materias",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "materias"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Materia por ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/materias/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "materias", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Todos los Profesores",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/profesores",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "profesores"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener Profesor por ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/api/profesores/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "profesores", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

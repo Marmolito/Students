@@ -1,0 +1,224 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "StudetnsAPI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/estudiantes": {
+      "get": {
+        "tags": [
+          "Estudiante"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Estudiante"
+        ],
+        "parameters": [
+          {
+            "name": "materiasIds",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Estudiante"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Estudiante"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Estudiante"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/estudiantes/{id}": {
+      "get": {
+        "tags": [
+          "Estudiante"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/materias": {
+      "get": {
+        "tags": [
+          "Materia"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/materias/{id}": {
+      "get": {
+        "tags": [
+          "Materia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/profesores": {
+      "get": {
+        "tags": [
+          "Profesor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/profesores/{id}": {
+      "get": {
+        "tags": [
+          "Profesor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Estudiante": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "materias": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Materia"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Materia": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "creditos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "profesorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "profesor": {
+            "$ref": "#/components/schemas/Profesor"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Profesor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
