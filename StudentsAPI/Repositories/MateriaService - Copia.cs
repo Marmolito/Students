@@ -13,7 +13,21 @@ public class MateriaService : IMateriaService
 
     public async Task<List<Materia>> ObtenerTodasAsync()
     {
-        return await _context.Materias.Include(m => m.Profesor).ToListAsync();
+        return await _context.Materias.Include(m => m.Profesor)
+            .Include(m => m.Estudiantes)
+            .Select(m => new Materia
+        {
+            Id = m.Id,
+            Nombre = m.Nombre,
+            Profesor = m.Profesor,
+            Estudiantes = m.Estudiantes.Select(e => new Estudiante
+            {
+                Id = e.Id,
+                Nombre = e.Nombre,
+                Email = e.Email
+                // No incluimos la propiedad "Materias" aquí
+            }).ToList()
+        }).ToListAsync();
     }
 
     public async Task<Materia?> ObtenerPorIdAsync(int id)

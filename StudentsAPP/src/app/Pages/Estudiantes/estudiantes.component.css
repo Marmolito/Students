@@ -1,0 +1,40 @@
+.container {
+    padding: 20px;
+  }
+  
+  .main-toolbar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    
+    .button-group {
+      button {
+        margin-left: 10px;
+      }
+    }
+  }
+  
+  .students-card {
+    margin-top: 20px;
+    
+    .full-width {
+      width: 100%;
+    }
+  }
+  
+  .dialog-title {
+    color: #3f51b5;
+    margin-bottom: 20px;
+  }
+  
+  .materia-details {
+    padding: 10px;
+    
+    p {
+      margin: 5px 0;
+    }
+  }
+  
+  mat-list-item {
+    border-bottom: 1px solid #eee;
+  }

@@ -2,25 +2,23 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { appSettings } from '../Settings/appSetings';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Estuidiante } from '../Models/Estudiante';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EstudianteServiceService {
+export class MateriaService {
 
   private http = inject(HttpClient);
-  private apiUrl: string = appSettings.apiUrl + "estudiantes";
+  private apiUrl: string = appSettings.apiUrl + "materias";
 
   constructor() { }
 
-  getEstudiantes(): Observable<Estuidiante> {
-    return this.http.get<Estuidiante>(this.apiUrl).pipe(
+  getMaterias(): Observable<any> {
+    return this.http.get<any>(this.apiUrl).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.error('Error fetching estudiantes:', error);
-        return throwError(() => new Error('Error fetching estudiantes'));
+        console.error('Error fetching materias:', error);
+        return throwError(() => new Error('Error fetching materias'));
       })
     );
   }
-
 }

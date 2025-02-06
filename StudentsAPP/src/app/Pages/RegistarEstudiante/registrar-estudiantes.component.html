@@ -1,0 +1,36 @@
+<div class="modal-container">
+  <h2 class="modal-title">Registro de Estudiante</h2>
+
+  <form [formGroup]="registroForm" (ngSubmit)="registrarEstudiante()" class="form-container">
+
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required />
+      <mat-error *ngIf="registroForm.get('nombre')?.invalid">
+        El nombre es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field full-width">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput formControlName="correo" type="email" required />
+      <mat-error *ngIf="registroForm.get('correo')?.invalid">
+        Ingresa un correo válido.
+      </mat-error>
+    </mat-form-field>
+
+    <h3 class="materia-title">Selecciona hasta 3 materias</h3>
+    <mat-selection-list formControlName="materias" class="materia-list">
+      <mat-list-option *ngFor="let materia of materias" [value]="materia.Id">
+        {{ materia.Nombre }} - Profesor: {{ materia.Profesor.Nombre }}
+      </mat-list-option>
+    </mat-selection-list>
+    <mat-error *ngIf="registroForm.get('materias')?.invalid">
+      Debes seleccionar exactamente 3 materias.
+    </mat-error>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registroForm.invalid" class="submit-button">
+      Registrar
+    </button>
+  </form>
+</div>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StudetnsAPI.Models.Dto;
 using StudetnsAPI.Models.Entities;
 
 [ApiController]
@@ -28,10 +29,10 @@ public class EstudianteController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Registrar([FromBody] Estudiante estudiante, [FromQuery] List<int> materiasIds)
+    public async Task<IActionResult> Registrar([FromBody] RegistroMateriasDto estudiante)
     {
-        var resultado = await _estudianteService.RegistrarEstudianteAsync(estudiante, materiasIds);
-        if (!resultado) return BadRequest("Error en la selección de materias");
-        return Ok("Estudiante registrado correctamente");
+        var resultado = await _estudianteService.RegistrarEstudianteAsync(estudiante);
+        if (!resultado) return BadRequest(new { mensaje = "Error en la selección de materias" });
+        return Ok(new { mensaje = "Estudiante registrado correctamente" });
     }
 }

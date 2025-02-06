@@ -1,8 +1,9 @@
-﻿using StudetnsAPI.Models.Entities;
+﻿using StudetnsAPI.Models.Dto;
+using StudetnsAPI.Models.Entities;
 
 public interface IEstudianteService
 {
     Task<List<Estudiante>> ObtenerTodosAsync();
     Task<Estudiante?> ObtenerPorIdAsync(int id);
-    Task<bool> RegistrarEstudianteAsync(Estudiante estudiante, List<int> materiasIds);
+    Task<bool> RegistrarEstudianteAsync(RegistroMateriasDto estudiante);
 }
